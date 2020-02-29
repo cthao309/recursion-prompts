@@ -52,7 +52,7 @@ var arraySum = function(array) {
 // 4. Check if a number is even.
 var isEven = function(n) {
 	n = Math.abs(n);
-	
+
 	if(n === 0) {
 		return true;
 	} else if(n === 1) {
@@ -65,8 +65,22 @@ var isEven = function(n) {
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
-// sumBelow(7); // 21
+// sumBelow(7); // 21 => 6+5+4+3+2+1
 var sumBelow = function(n) {
+	if(n === 0) {
+		return 0;
+	} else if(n > 0) {
+		let currentNum = (n -1);
+		let nextNum = sumBelow(n-1);
+
+		return currentNum + nextNum;
+	} else if(n < 0) {
+		let currentElm = (n +1);
+		let nextNum = sumBelow(n + 1);
+
+		return currentElm + nextNum;
+
+	}
 };
 
 // 6. Get the integers within a range (x, y).
