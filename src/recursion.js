@@ -126,14 +126,36 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+	if(n === 1) {
+		return true;
+	} else if(n < 1) {
+		return false;
+	} else {
+		n = n/2;
+		return powerOfTwo(n);
+	}
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+	if(string.length === 1) {
+		return string;
+	} else {
+		return string.slice(-1) + reverse(string.slice(0, string.length -1)); 
+	}
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+	string = string.toLowerCase().replace(/ /g, '');
+
+	if(string.length === 0 || string.length === 1) {
+		return true;
+	} else if(string[0] === string[string.length -1]) {
+		return palindrome(string.substring(1, string.length -1));
+	} else {
+		return false;
+	}
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -142,6 +164,20 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+	if (y === 0) {
+		return NaN;
+  } else if (x === 0) {
+		return 0;
+  } else if (x < 0) {
+		return -modulo(-x, y);
+  } else if (y < 0) {
+		return modulo(x, -y);
+  } else if (x >= y) {
+		return modulo(x - y, y);
+  } else {
+		return x;
+  }
+
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
