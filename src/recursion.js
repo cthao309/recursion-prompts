@@ -168,21 +168,34 @@ var modulo = function(x, y) {
 		return NaN;
   } else if (x === 0) {
 		return 0;
-  } else if (x < 0) {
+	} else if (x < 0) {
 		return -modulo(-x, y);
-  } else if (y < 0) {
+	} else if (y < 0) {
 		return modulo(x, -y);
-  } else if (x >= y) {
+	} else if (x >= y) {
 		return modulo(x - y, y);
-  } else {
+	} else {
 		return x;
-  }
+	}
 
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+	if(x === 0 || y === 0) {
+		return 0;
+	} else if(x < 0 &&  y > 0) {
+		return -multiply(-x, y);
+	} else if(x > 0 && y < 0) {
+		return -multiply(x, -y)
+	} else if(x < 0 && y < 0) {
+		return multiply(-x, -y);
+	} else if(y > 1) {
+		return x + multiply(x, y -1);
+	} else {
+		return x;
+	}
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
